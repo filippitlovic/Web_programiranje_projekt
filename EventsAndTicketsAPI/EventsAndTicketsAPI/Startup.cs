@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,15 @@ namespace EventsAndTicketsAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            //enable CORS   
+            services.AddCors(c =>
+            {
+                c.AddPolicy("Allow origin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
+            //JSON serialzer
+            services.AddControllersWithViews().AddNewtonsoftJson(options=> options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(options=>options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -37,6 +47,7 @@ namespace EventsAndTicketsAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
