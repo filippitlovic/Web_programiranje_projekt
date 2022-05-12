@@ -1,0 +1,37 @@
+<h2>Događaji u Hrvatskoj</h2>
+
+<form [formGroup]="form">
+  <mat-form-field apperance="outline">
+    <mat-label>Pretraži po imenu</mat-label>
+    <input formControlName="title" matInput />
+  </mat-form-field>
+
+  <!--   <mat-form-field apperance="outline">
+    <mat-label>Odaberi grad</mat-label>
+    <mat-select
+      formControlName="city"
+      (change)="filterEvents($event.target.value)"
+    >
+      <mat-option *ngFor="let city of eventCities" [value]="city.Id">
+        {{ city.Name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+  <!--   <mat-form-field apperance="outline">
+    <mat-label>Odaberi vrstu događaja</mat-label>
+    <mat-select formControlName="eventType">
+      <mat-option *ngFor="let eventType of eventTypes" [value]="eventType.Id">
+        {{ eventType.Name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+  <!--   <mat-form-field apperance="outline">
+    <mat-label>Odaberi mjesec</mat-label>
+    <mat-datepicker #picker></mat-datepicker>
+    <input formControlName="dateOfEvent" matInput [matDatepicker]="picker" />
+    <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+  </mat-form-field> -->
+</form>
+<app-events-list [events]="events"></app-events-list>

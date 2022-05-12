@@ -1,7 +1,10 @@
+using AutoMapper;
+using EventsAndTicketsAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,15 +31,22 @@ namespace EventsAndTicketsAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            //baza
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //enable CORS   
-            services.AddCors(c =>
+            services.AddCors(options =>
             {
-                c.AddPolicy("Allow origin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+                options.AddDefaultPolicy(builder =>
+                {
+                    var frontendURL = Configuration.GetValue<string>("frontend_url");
+                    builder.WithOrigins(frontendURL).AllowAnyMethod().AllowAnyHeader();
+                });
             });
 
             //JSON serialzer
             services.AddControllersWithViews().AddNewtonsoftJson(options=> options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(options=>options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

@@ -1,0 +1,6 @@
+form{
+    width:100%;
+}
+form mat-form-field{
+    width: 10%;
+}
