@@ -1,1 +1,10 @@
 <h2>Detalji o događaju</h2>
+
+<div *ngIf="event">
+  <div>
+    <p>
+      <a> {{ event.Description }} </a>
+    </p>
+  </div>
+</div>
+<button mat-flat-button mat-dialog-close>Zatvori</button>

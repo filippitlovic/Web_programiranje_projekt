@@ -37,6 +37,18 @@ namespace EventsAndTicketsAPI.Controllers
             
             return mapper.Map<List<EventDTO>>(events);
         }
+        [HttpGet("{Id:int}")]
+        public async Task<ActionResult<EventDTO>> Get(int Id)
+        {
+            var events = await context.Event.FirstOrDefaultAsync(x => x.Id == Id);
+            //var events = await context.Event.Include(x=>x.EventAndEventTypes).ThenInclude(x=>x.EventType).FirstOrDefaultAsync(x => x.Id == Id);
+            if (events == null)
+            { 
+                return NotFound();
+            }
+            Console.WriteLine("DOGADAJjao:" + JsonConvert.SerializeObject(events, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
+            return mapper.Map<EventDTO>(events);
+        }
         /*[HttpGet]
         
         public async Task<ActionResult<EventPostGetDTO>> PostGet()

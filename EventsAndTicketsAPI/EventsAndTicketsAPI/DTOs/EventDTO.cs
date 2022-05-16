@@ -16,5 +16,6 @@ namespace EventsAndTicketsAPI.DTOs
         public DateTime Date { get; set; }
         public string Poster { get; set; }
         public List<EventAndEventType> EventAndEventTypes { get; set; }
+        public List<EventTypeDTO> EventTypeDto { get; set; }
     }
 }

@@ -1,7 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { BrowserModule } from '@angular/platform-browser';
 import { DetailsDialogComponent } from 'src/app/assets/details-dialog/details-dialog.component';
 import { cityDTO } from 'src/app/DTOs/cityDTO';
 import { eventDTO } from 'src/app/DTOs/eventDTO';
@@ -23,11 +24,7 @@ export class FilterEventsComponent implements OnInit {
     private citiesService: CitiesService,
     private dialog: MatDialog
   ) {}
-
-  eventIndex;
-
   form: FormGroup;
-
   eventTypes: eventTypeDTO[];
   events: eventDTO[];
   eventCities: cityDTO[];
@@ -81,8 +78,9 @@ export class FilterEventsComponent implements OnInit {
     this.form.patchValue(this.initialFormValues);
   }
 
-  openDialog(data: number) {
-    const dialogRef = this.dialog.open(DetailsDialogComponent);
-    this.eventIndex = data;
+  openDialog(id: number) {
+    const dialogRef = this.dialog.open(DetailsDialogComponent, {
+      data: { id: id },
+    });
   }
 }

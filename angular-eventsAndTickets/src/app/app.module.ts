@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
 import { FilterEventsComponent } from './events/filter-events/filter-events.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
+import { CommonModule } from '@angular/common';
+import { DetailsDialogComponent } from './assets/details-dialog/details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { EventsListComponent } from './events/events-list/events-list.component'
     MenuComponent,
     FilterEventsComponent,
     EventsListComponent,
+    DetailsDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { EventsListComponent } from './events/events-list/events-list.component'
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

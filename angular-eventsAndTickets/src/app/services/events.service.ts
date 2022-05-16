@@ -13,7 +13,9 @@ export class EventsService {
   public getAllEvents(): Observable<eventDTO[]> {
     return this.http.get<eventDTO[]>(this.apiURL);
   }
-
+  getEventById(id: number): Observable<eventDTO> {
+    return this.http.get<eventDTO>(`${this.apiURL}/${id}`);
+  }
   public filter(values: any): Observable<any> {
     const params = new HttpParams({ fromObject: values });
     console.log('vrijednosti:');
