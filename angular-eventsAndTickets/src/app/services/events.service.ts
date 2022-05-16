@@ -16,7 +16,7 @@ export class EventsService {
 
   public filter(values: any): Observable<any> {
     const params = new HttpParams({ fromObject: values });
-    console.log('vrijednosti' + params);
+    console.log('vrijednosti:');
     return this.http.get<eventDTO[]>(`${this.apiURL}/filter`, {
       params,
       observe: 'response',

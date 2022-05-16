@@ -6,32 +6,77 @@
     <input formControlName="title" matInput />
   </mat-form-field>
 
-  <!--   <mat-form-field apperance="outline">
+  <mat-form-field apperance="outline">
     <mat-label>Odaberi grad</mat-label>
     <mat-select
       formControlName="city"
       (change)="filterEvents($event.target.value)"
     >
+      <mat-option [value]="0"> -- </mat-option>
       <mat-option *ngFor="let city of eventCities" [value]="city.Id">
         {{ city.Name }}
       </mat-option>
     </mat-select>
-  </mat-form-field> -->
+  </mat-form-field>
 
-  <!--   <mat-form-field apperance="outline">
+  <mat-form-field apperance="outline">
     <mat-label>Odaberi vrstu događaja</mat-label>
     <mat-select formControlName="eventType">
+      <mat-option [value]="0"> -- </mat-option>
       <mat-option *ngFor="let eventType of eventTypes" [value]="eventType.Id">
         {{ eventType.Name }}
       </mat-option>
     </mat-select>
-  </mat-form-field> -->
+  </mat-form-field>
 
-  <!--   <mat-form-field apperance="outline">
+  <mat-form-field apperance="outline">
     <mat-label>Odaberi mjesec</mat-label>
     <mat-datepicker #picker></mat-datepicker>
     <input formControlName="dateOfEvent" matInput [matDatepicker]="picker" />
     <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
-  </mat-form-field> -->
+  </mat-form-field>
+  <div>
+    <button mat-flat-button (click)="clearForm()" color="warn">Clear</button>
+  </div>
+
+  <h2>Lista dogadaja</h2>
+
+  <ng-container>
+    <div class="events-container">
+      <div *ngIf="events?.length === 0">No records to display</div>
+      <div
+        *ngFor="let event of events; let index = index"
+        class="event-container"
+      >
+        <a>
+          <img [src]="event.Poster" alt="Poster" />
+        </a>
+        <p>
+          <a> {{ event.Name }} </a>
+        </p>
+
+        <p>
+          <a>
+            {{ event.TicketPrice }}
+          </a>
+        </p>
+        <p>
+          <a>
+            {{ event.Date }}
+          </a>
+        </p>
+        <a>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="openDialog(event.Id)"
+          >
+            detalji
+          </button>
+          <button mat-stroked-button>kupi ulaznicu</button>
+        </a>
+      </div>
+    </div>
+  </ng-container>
 </form>
-<app-events-list [events]="events"></app-events-list>
+<!-- <app-events-list [events]="events"></app-events-list> -->

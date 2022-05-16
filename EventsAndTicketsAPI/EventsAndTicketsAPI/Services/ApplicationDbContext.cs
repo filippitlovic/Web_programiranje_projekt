@@ -16,12 +16,17 @@ namespace EventsAndTicketsAPI.Services
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<EventAndEventType>().HasKey(x => new { x.EventId, x.EventTypeId }); //postavljam da ce SportAndSportTypes tablica imat 2 primary keya
+            modelBuilder.Entity<EventAndEventType>().HasKey(x => new { x.EventId, x.EventTypeId }); //postavljam da ce EventAndCity tablica imat 2 primary keya
+
+            modelBuilder.Entity<EventAndCity>().HasKey(x => new { x.EventId, x.CityId });
             base.OnModelCreating(modelBuilder);
+
+
         }
         public DbSet<Event> Event { get; set; }
         public DbSet<EventType> EventType { get; set; }
         public DbSet<EventAndEventType> EventAndEventTypes { get; set; }
         public DbSet<CityEvent> CityEvent { get; set; }
+        public DbSet<EventAndCity> EventAndCity { get; set; }
     }
 }

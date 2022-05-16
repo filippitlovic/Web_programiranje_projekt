@@ -11,7 +11,6 @@ export class EventsListComponent implements OnInit {
   events: eventDTO[];
 
   constructor(private eventsService: EventsService) {}
-
   ngOnInit(): void {
     this.eventsService.getAllEvents().subscribe((events) => {
       this.events = events;

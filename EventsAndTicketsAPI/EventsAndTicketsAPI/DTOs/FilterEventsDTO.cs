@@ -8,6 +8,8 @@ namespace EventsAndTicketsAPI.DTOs
     public class FilterEventsDTO
     {
         public string Title { get; set; }
-        public int EventTypeId { get; set; }
+        public int EventType { get; set; } 
+        public int City { get; set; }
+        //public DateTime DateOfEvent { get; set; }
     }
 }

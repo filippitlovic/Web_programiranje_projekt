@@ -1,6 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailsDialogComponent } from 'src/app/assets/details-dialog/details-dialog.component';
 import { cityDTO } from 'src/app/DTOs/cityDTO';
 import { eventDTO } from 'src/app/DTOs/eventDTO';
 import { eventTypeDTO } from 'src/app/DTOs/eventTypeDTO';
@@ -18,49 +20,29 @@ export class FilterEventsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private eventsService: EventsService,
     private eventTypeService: EventTypesService,
-    private citiesService: CitiesService
+    private citiesService: CitiesService,
+    private dialog: MatDialog
   ) {}
-  /* 
-  eventCities: {
-    Id: number;
-    Name: string;
-  }[]; */
+
+  eventIndex;
 
   form: FormGroup;
 
   eventTypes: eventTypeDTO[];
   events: eventDTO[];
   eventCities: cityDTO[];
+
   initialFormValues: any;
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       title: '',
-      //city: '',
-      //eventType: '',
-      //dateOfEvent: Date,
+      city: 0,
+      eventType: 0,
+      dateOfEvent: Date,
     });
 
-    this.initialFormValues = this.form.valueChanges;
-
-    /*     this.citiesService.getAllCities().subscribe((eventCities) => {
-      this.filterEvents(this.form.value);
-      this.eventCities = eventCities;
-      this.form.valueChanges.subscribe((values) => {
-        console.log(values);
-        this.filterEvents(values);
-      });
-    });
- */
-    /*     this.eventTypeService.getAllEventTypes().subscribe((eventTypes) => {
-      this.filterEvents(this.form.value);
-      this.eventTypes = eventTypes;
-      console.log(this.eventTypes);
-      this.form.valueChanges.subscribe((values) => {
-        console.log(values);
-        this.filterEvents(values);
-      });
-    }); */
+    this.initialFormValues = this.form.value;
 
     this.eventsService.getAllEvents().subscribe((events) => {
       this.events = events;
@@ -69,7 +51,24 @@ export class FilterEventsComponent implements OnInit {
         this.filterEvents(values);
       });
     });
+
+    this.citiesService.getAllCities().subscribe((eventCities) => {
+      this.filterEvents(this.form.value);
+      this.eventCities = eventCities;
+      this.form.valueChanges.subscribe((values) => {
+        this.filterEvents(values);
+      });
+    });
+
+    this.eventTypeService.getAllEventTypes().subscribe((eventTypes) => {
+      this.filterEvents(this.form.value);
+      this.eventTypes = eventTypes;
+      this.form.valueChanges.subscribe((values) => {
+        this.filterEvents(values);
+      });
+    });
   }
+
   filterEvents(values: any) {
     this.eventsService
       .filter(values)
@@ -80,5 +79,10 @@ export class FilterEventsComponent implements OnInit {
 
   clearForm() {
     this.form.patchValue(this.initialFormValues);
+  }
+
+  openDialog(data: number) {
+    const dialogRef = this.dialog.open(DetailsDialogComponent);
+    this.eventIndex = data;
   }
 }

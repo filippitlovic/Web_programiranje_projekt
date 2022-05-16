@@ -52,21 +52,25 @@ namespace EventsAndTicketsAPI.Controllers
             if (!string.IsNullOrEmpty(filterEventsDTO.Title))  ///ako string nije prazan, znaci ako je unesen
             {
                 eventsQueryable = eventsQueryable.Where(x => x.Name.Contains(filterEventsDTO.Title));
-
                 Console.WriteLine("Poruka" + filterEventsDTO.Title);
             }
             //za dropdown s eventTypeovima
-            /*if(filterEventsDTO.EventTypeId != 0) ///ako id nije 0, znaci ako je odabrano nesta
+            if(filterEventsDTO.EventType != 0) ///ako id nije 0, znaci ako je odabrano nesta
             {
-                eventsQueryable = eventsQueryable.Where(x => x.EventAndEventTypes.Select(y => y.EventTypeId).Contains(filterEventsDTO.EventTypeId));
-            }*/
-            var evenst = await context.Event.Where(x => x.Name.Contains(filterEventsDTO.Title)).ToListAsync();
+                eventsQueryable = eventsQueryable.Where(x => x.EventAndEventTypes.Select(y => y.EventTypeId).Contains(filterEventsDTO.EventType));
+            }
 
-            Console.WriteLine("gsag:" + filterEventsDTO.Title);
-            //Console.WriteLine("DOGADAJ:" + JsonConvert.SerializeObject(evenst,(Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
+            //za dropdown s cityType
+           if (filterEventsDTO.City != 0) 
+            {
+                eventsQueryable = eventsQueryable.Where(x => x.EventAndCities.Select(y=>y.CityId).Contains(filterEventsDTO.City));
+                Console.WriteLine("DOGADAJjao:" + JsonConvert.SerializeObject(eventsQueryable, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
+            }
+
+
             var events = await eventsQueryable.OrderBy(x => x.Name).ToListAsync();
             Console.WriteLine("DOGADAJ:" + JsonConvert.SerializeObject(events, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
-            return mapper.Map<List<EventDTO>>(evenst);
+            return mapper.Map<List<EventDTO>>(events);
         }
         [HttpPost]
         public async Task<ActionResult> Post([FromForm] EventCreationDTO eventCreationDTO)
