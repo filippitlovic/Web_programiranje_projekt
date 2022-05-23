@@ -7,8 +7,19 @@
   <div><a routerLink="" mat-button>Koncerti</a></div>
 
   <div><a routerLink="" mat-button>Filmovi</a></div>
-  <span class="flexExpand"></span>
-  <div>
-    <a mat-stroked-button routerLink=""><mat-icon>person</mat-icon> Login</a>
+
+  <div class="space">
+
   </div>
+
+  <app-authorize-view>
+    <ng-container authorized>
+      <a mat-button (click)="securityService.logout()">Logout</a>
+    </ng-container>
+    <ng-container notAuthorized>
+      <a mat-button routerLink="login">Login</a>
+      <a mat-button routerLink="register">Register</a>
+    </ng-container>
+  </app-authorize-view>
+
 </mat-toolbar>
