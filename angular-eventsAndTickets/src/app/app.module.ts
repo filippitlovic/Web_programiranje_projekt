@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
 import { FilterEventsComponent } from './events/filter-events/filter-events.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
+import { RegisterComponent } from './security/register/register.component';
+import { AuthenticationFormComponent } from './security/authentication-form/authentication-form.component';
+import { AuthorizeViewComponent } from './security/authorize-view/authorize-view.component';
+import { LoginComponentComponent } from './security/login-component/login.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,10 @@ import { EventsListComponent } from './events/events-list/events-list.component'
     MenuComponent,
     FilterEventsComponent,
     EventsListComponent,
+    RegisterComponent,
+    AuthenticationFormComponent,
+    AuthorizeViewComponent,
+    LoginComponentComponent,
   ],
   imports: [
     BrowserModule,

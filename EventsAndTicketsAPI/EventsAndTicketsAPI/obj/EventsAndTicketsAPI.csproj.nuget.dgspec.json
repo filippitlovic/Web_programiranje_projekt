@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projekti\\EventsAndTickets_WebProject\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj": {}
+    "C:\\Users\\seba\\Web_programiranje_projekt\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj": {}
   },
   "projects": {
-    "E:\\Projekti\\EventsAndTickets_WebProject\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj": {
+    "C:\\Users\\seba\\Web_programiranje_projekt\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projekti\\EventsAndTickets_WebProject\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj",
+        "projectUniqueName": "C:\\Users\\seba\\Web_programiranje_projekt\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj",
         "projectName": "EventsAndTicketsAPI",
-        "projectPath": "E:\\Projekti\\EventsAndTickets_WebProject\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj",
-        "packagesPath": "C:\\Users\\Pitlisti\\.nuget\\packages\\",
-        "outputPath": "E:\\Projekti\\EventsAndTickets_WebProject\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\obj\\",
+        "projectPath": "C:\\Users\\seba\\Web_programiranje_projekt\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\EventsAndTicketsAPI.csproj",
+        "packagesPath": "C:\\Users\\seba\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\seba\\Web_programiranje_projekt\\EventsAndTicketsAPI\\EventsAndTicketsAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Pitlisti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\seba\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +41,14 @@
           "targetAlias": "net5.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.1, )"
             },
@@ -80,6 +85,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.17, 5.0.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -88,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
