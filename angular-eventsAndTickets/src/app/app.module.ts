@@ -16,6 +16,11 @@ import { RegisterComponent } from './security/register/register.component';
 import { AuthenticationFormComponent } from './security/authentication-form/authentication-form.component';
 import { AuthorizeViewComponent } from './security/authorize-view/authorize-view.component';
 import { LoginComponentComponent } from './security/login-component/login.component';
+import { SportsComponent } from './events/sports/sports.component';
+import { TheaterComponent } from './events/theater/theater.component';
+import { MusicComponent } from './events/music/music.component';
+import { EntertainmentComponent } from './events/entertainment/entertainment.component';
+import { TicketComponent } from './ticketShop/ticket/ticket.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { LoginComponentComponent } from './security/login-component/login.compon
     AuthenticationFormComponent,
     AuthorizeViewComponent,
     LoginComponentComponent,
+    SportsComponent,
+    TheaterComponent,
+    MusicComponent,
+    EntertainmentComponent,
+    TicketComponent,
   ],
   imports: [
     BrowserModule,

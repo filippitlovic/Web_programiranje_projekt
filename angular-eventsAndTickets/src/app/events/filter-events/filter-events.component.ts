@@ -2,8 +2,6 @@ import { HttpResponse } from '@angular/common/http';
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { BrowserModule } from '@angular/platform-browser';
-import { DetailsDialogComponent } from 'src/app/assets/details-dialog/details-dialog.component';
 import { cityDTO } from 'src/app/DTOs/cityDTO';
 import { eventDTO } from 'src/app/DTOs/eventDTO';
 import { eventTypeDTO } from 'src/app/DTOs/eventTypeDTO';
@@ -21,8 +19,7 @@ export class FilterEventsComponent implements OnInit {
     private formBuilder: FormBuilder,
     private eventsService: EventsService,
     private eventTypeService: EventTypesService,
-    private citiesService: CitiesService,
-    private dialog: MatDialog
+    private citiesService: CitiesService
   ) {}
   form: FormGroup;
   eventTypes: eventTypeDTO[];
@@ -76,11 +73,5 @@ export class FilterEventsComponent implements OnInit {
 
   clearForm() {
     this.form.patchValue(this.initialFormValues);
-  }
-
-  openDialog(id: number) {
-    const dialogRef = this.dialog.open(DetailsDialogComponent, {
-      data: { id: id },
-    });
   }
 }

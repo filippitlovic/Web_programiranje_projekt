@@ -11,6 +11,7 @@ namespace EventsAndTicketsAPI.Entities
         public int Id { get; set; }
         [StringLength(maximumLength: 75)]
         [Required]
+        public int TypeId { get; set; }
         public string Name { get; set; }
         public int TicketPrice { get; set; }
         public string Description { get; set; }

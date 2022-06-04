@@ -3,8 +3,14 @@ mat-toolbar{
     position: -webkit-sitcky;
     top: 0;
     z-index:1000;
+    background-color: rgb(216, 216, 216);
 }
 
 .space {
     flex: 1 1 auto;
+}
+a:hover{
+    transform: scale(1.15);
+    
+    transition: transform .5s; /* Animation */
 }

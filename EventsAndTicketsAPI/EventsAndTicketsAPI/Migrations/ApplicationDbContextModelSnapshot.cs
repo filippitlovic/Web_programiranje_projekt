@@ -51,14 +51,16 @@ namespace EventsAndTicketsAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(75)
-                        .HasColumnType("nvarchar(75)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Poster")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TicketPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeId")
+                        .HasMaxLength(75)
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -114,21 +116,25 @@ namespace EventsAndTicketsAPI.Migrations
                     b.ToTable("EventType");
                 });
 
-            modelBuilder.Entity("EventsAndTicketsAPI.Entities.EventAndCity", b =>
+            modelBuilder.Entity("EventsAndTicketsAPI.Entities.Ticket", b =>
                 {
-                    b.HasOne("EventsAndTicketsAPI.Entities.CityEvent", "CityEvent")
-                        .WithMany()
-                        .HasForeignKey("CityEventId");
+                    b.Property<int>("TicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
-                    b.HasOne("EventsAndTicketsAPI.Entities.Event", "Event")
-                        .WithMany("EventAndCities")
-                        .HasForeignKey("EventId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("CityEvent");
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
 
-                    b.Navigation("Event");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TicketId");
+
+                    b.ToTable("Ticket");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -325,6 +331,23 @@ namespace EventsAndTicketsAPI.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("EventsAndTicketsAPI.Entities.EventAndCity", b =>
+                {
+                    b.HasOne("EventsAndTicketsAPI.Entities.CityEvent", "CityEvent")
+                        .WithMany()
+                        .HasForeignKey("CityEventId");
+
+                    b.HasOne("EventsAndTicketsAPI.Entities.Event", "Event")
+                        .WithMany("EventAndCities")
+                        .HasForeignKey("EventId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CityEvent");
+
+                    b.Navigation("Event");
                 });
 
             modelBuilder.Entity("EventsAndTicketsAPI.Entities.EventAndEventType", b =>

@@ -1,25 +1,29 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
   <span>
     <a routerLink="" mat-button> <mat-icon>event</mat-icon> Događaji</a>
   </span>
-  <div><a routerLink="" mat-button>Sport</a></div>
+  <div><a routerLink="sport" mat-button>Sport</a></div>
 
-  <div><a routerLink="" mat-button>Koncerti</a></div>
+  <div><a routerLink="music" mat-button>Glazba</a></div>
 
-  <div><a routerLink="" mat-button>Filmovi</a></div>
+  <div><a routerLink="theater" mat-button>Kazališne predstave</a></div>
 
-  <div class="space">
+  <div><a routerLink="entertainment" mat-button>Zabava</a></div>
 
-  </div>
+  <div class="space"></div>
 
   <app-authorize-view>
     <ng-container authorized>
-      <a mat-button (click)="securityService.logout()">Logout</a>
+      <a routerLink="profile" mat-button
+        >Profil <mat-icon>person_pin</mat-icon></a
+      >
+      <a mat-button color="warn" (click)="securityService.logout()"
+        >Logout<mat-icon>exit_to_app</mat-icon></a
+      >
     </ng-container>
     <ng-container notAuthorized>
       <a mat-button routerLink="login">Login</a>
       <a mat-button routerLink="register">Register</a>
     </ng-container>
   </app-authorize-view>
-
 </mat-toolbar>

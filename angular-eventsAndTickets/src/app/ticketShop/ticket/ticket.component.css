@@ -1,0 +1,43 @@
+h2{
+    text-align: center;
+}
+.event{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+    text-align: center;
+}
+
+p{
+    max-width: 1000px;
+    height: 44px;
+    font-size: 14px;
+    font-weight: bold;
+}
+a{
+    font-style: italic;
+}
+.naslov{
+    font-size: large;
+    color: rgb(118, 0, 0);
+    font-style: italic;
+    font-variant: small-caps;
+}
+
+img{
+width: 340px;
+height: 370px;
+border-top-right-radius: 10px;
+border-top-left-radius: 10px;
+border-end-end-radius: 20px;
+border-bottom-left-radius: 20px;
+}
+
+.buttons{
+    position: relative;
+    margin-top:110px;
+}

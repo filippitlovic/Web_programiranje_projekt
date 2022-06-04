@@ -29,5 +29,6 @@ namespace EventsAndTicketsAPI.Services
         public DbSet<EventAndEventType> EventAndEventTypes { get; set; }
         public DbSet<CityEvent> CityEvent { get; set; }
         public DbSet<EventAndCity> EventAndCity { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
     }
 }

@@ -1,5 +1,15 @@
+h3{
+    margin-top: 100px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 40px;
+    margin-bottom: 30px;
+}
 form{
+    
     max-width: 500px;
+    margin: 0 auto; 
+    width:450px;
 }
 
 mat-form-field{

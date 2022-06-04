@@ -1,0 +1,27 @@
+<h2>Kupi ulaznicu</h2>
+<ng-container>
+  <div class="event">
+    <a>
+      <img [src]="event.Poster" alt="Poster" />
+    </a>
+    <p>
+      <a class="naslov"> {{ event.Name }} </a>
+    </p>
+    <p>
+      <a>
+        {{ event.Date }}
+      </a>
+    </p>
+    <p>
+      <a>
+        {{ event.Description }}
+      </a>
+    </p>
+    <p class="buttons">
+      <a>
+        <button mat-flat-button color="primary" routerLink="">odustani</button>
+        <button mat-stroked-button (click)="buyTicket()">Kupi ulaznicu</button>
+      </a>
+    </p>
+  </div>
+</ng-container>

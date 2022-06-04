@@ -13,9 +13,22 @@ export class EventsService {
   public getAllEvents(): Observable<eventDTO[]> {
     return this.http.get<eventDTO[]>(this.apiURL);
   }
-  getEventById(id: number): Observable<eventDTO> {
+  public getEventById(id: number): Observable<eventDTO> {
     return this.http.get<eventDTO>(`${this.apiURL}/${id}`);
   }
+  public getSportEvents(): Observable<eventDTO[]> {
+    return this.http.get<eventDTO[]>(`${this.apiURL}/sports`);
+  }
+  public GetAllMusicEvents(): Observable<eventDTO[]> {
+    return this.http.get<eventDTO[]>(`${this.apiURL}/music`);
+  }
+  public GetAllEntertainmentEvents(): Observable<eventDTO[]> {
+    return this.http.get<eventDTO[]>(`${this.apiURL}/entertainment`);
+  }
+  public GetTheaterEvents(): Observable<eventDTO[]> {
+    return this.http.get<eventDTO[]>(`${this.apiURL}/theater`);
+  }
+
   public filter(values: any): Observable<any> {
     const params = new HttpParams({ fromObject: values });
     console.log('vrijednosti:');

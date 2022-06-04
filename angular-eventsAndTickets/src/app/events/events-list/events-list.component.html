@@ -1,7 +1,3 @@
-<h2>lista</h2>
-
-<h2>Lista dogadaja</h2>
-
 <ng-container>
   <div class="events-container">
     <div *ngIf="events?.length === 0">No records to display</div>
@@ -15,17 +11,19 @@
       <p>
         <a> {{ event.Name }} </a>
       </p>
-
-      <p>
-        <a>
-          {{ event.TicketPrice }}
-        </a>
-      </p>
       <p>
         <a>
           {{ event.Date }}
         </a>
       </p>
+      <a>
+        <button mat-flat-button color="primary" (click)="openDialog(event.Id)">
+          detalji
+        </button>
+        <button mat-stroked-button (click)="buyTicket(event.Id)">
+          kupi ulaznicu
+        </button>
+      </a>
     </div>
   </div>
 </ng-container>

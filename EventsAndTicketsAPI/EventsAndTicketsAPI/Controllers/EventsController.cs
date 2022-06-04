@@ -37,11 +37,38 @@ namespace EventsAndTicketsAPI.Controllers
             
             return mapper.Map<List<EventDTO>>(events);
         }
+        [HttpGet("sports")]
+        public async Task<ActionResult<List<EventDTO>>> GetSportEvents()
+        {
+            var events = await context.Event.Where(x => x.TypeId == 1).ToListAsync();
+
+            return mapper.Map<List<EventDTO>>(events);
+        }
+        [HttpGet("music")]
+        public async Task<ActionResult<List<EventDTO>>> GetAllMusicEvents()
+        {
+            var events = await context.Event.Where(x => x.TypeId == 2).ToListAsync();
+
+            return mapper.Map<List<EventDTO>>(events);
+        }
+        [HttpGet("entertainment")]
+        public async Task<ActionResult<List<EventDTO>>> GetAllEntertainmentEvents()
+        {
+            var events = await context.Event.Where(x => x.TypeId == 4).ToListAsync();
+
+            return mapper.Map<List<EventDTO>>(events);
+        }
+        [HttpGet("theater")]
+        public async Task<ActionResult<List<EventDTO>>> GetTheaterEvents()
+        {
+            var events = await context.Event.Where(x => x.TypeId == 3).ToListAsync();
+
+            return mapper.Map<List<EventDTO>>(events);
+        }
         [HttpGet("{Id:int}")]
         public async Task<ActionResult<EventDTO>> Get(int Id)
         {
             var events = await context.Event.FirstOrDefaultAsync(x => x.Id == Id);
-            //var events = await context.Event.Include(x=>x.EventAndEventTypes).ThenInclude(x=>x.EventType).FirstOrDefaultAsync(x => x.Id == Id);
             if (events == null)
             { 
                 return NotFound();
@@ -49,14 +76,7 @@ namespace EventsAndTicketsAPI.Controllers
             Console.WriteLine("DOGADAJjao:" + JsonConvert.SerializeObject(events, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
             return mapper.Map<EventDTO>(events);
         }
-        /*[HttpGet]
-        
-        public async Task<ActionResult<EventPostGetDTO>> PostGet()
-        {
-            var eventTypes = await context.EventType.ToListAsync();
-            var eventTypesDTO = mapper.Map<List<EventTypeDTO>>(eventTypes);
-            return new EventPostGetDTO() { Events = eventTypesDTO };
-        }*/
+
         [HttpGet("filter")] 
         public async Task<ActionResult<List<EventDTO>>> Filter([FromQuery] FilterEventsDTO filterEventsDTO)
         {
@@ -96,6 +116,5 @@ namespace EventsAndTicketsAPI.Controllers
             await context.SaveChangesAsync();
             return NoContent();
         }
-        
     }
 }
