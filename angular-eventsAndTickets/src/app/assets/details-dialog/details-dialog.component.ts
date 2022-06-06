@@ -2,7 +2,6 @@ import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { eventDTO } from 'src/app/DTOs/eventDTO';
-import { FilterEventsComponent } from 'src/app/events/filter-events/filter-events.component';
 import { EventsService } from 'src/app/services/events.service';
 
 @Component({
@@ -20,8 +19,6 @@ export class DetailsDialogComponent implements OnInit {
   ngOnInit(): void {
     this.eventsService.getEventById(this.data).subscribe((event) => {
       this.event = event;
-
-      console.log(this.event);
     });
   }
 }

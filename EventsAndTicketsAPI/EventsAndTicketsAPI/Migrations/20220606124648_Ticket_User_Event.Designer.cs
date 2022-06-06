@@ -4,14 +4,16 @@ using EventsAndTicketsAPI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventsAndTicketsAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220606124648_Ticket_User_Event")]
+    partial class Ticket_User_Event
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,7 +146,6 @@ namespace EventsAndTicketsAPI.Migrations
 
                     b.Property<string>("UserMail")
                         .HasColumnType("nvarchar(max)");
-
 
                     b.ToTable("UserAndEvent");
                 });

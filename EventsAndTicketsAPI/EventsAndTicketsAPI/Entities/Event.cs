@@ -18,7 +18,7 @@ namespace EventsAndTicketsAPI.Entities
         public string City { get; set; }
         public DateTime Date { get; set; }
         public string Poster { get; set; }
-        public List<EventAndEventType> EventAndEventTypes { get; set; } //za povezivanje event enittiya i eventtype entitija
-        public List<EventAndCity> EventAndCities { get; set; } ///za povezivanje eventa i citya tog eventa
+        public List<EventAndEventType> EventAndEventTypes { get; set; } 
+        public List<EventAndCity> EventAndCities { get; set; } 
     }
 }

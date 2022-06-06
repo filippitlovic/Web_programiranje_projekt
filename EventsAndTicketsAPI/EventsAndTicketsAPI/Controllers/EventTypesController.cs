@@ -25,8 +25,8 @@ namespace EventsAndTicketsAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EventTypeDTO>>> Get()
         {
-            var types = await context.EventType.ToListAsync(); //SportTypes naziv tablice u bazi, spremanje u varijablu types
-            return mapper.Map<List<EventTypeDTO>>(types); ///mapiranje podataka iz baze u SportTypeDTO
+            var types = await context.EventType.ToListAsync(); 
+            return mapper.Map<List<EventTypeDTO>>(types); 
         }
 
         [HttpGet("{Id:int}")]

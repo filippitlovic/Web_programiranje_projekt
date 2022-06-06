@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace EventsAndTicketsAPI.Helpers
 {
 
-    //27.
     public class TypeBinder<T> : IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
@@ -18,7 +17,7 @@ namespace EventsAndTicketsAPI.Helpers
 
             if(value == ValueProviderResult.None)
             {
-                return Task.CompletedTask;   ///jer ako nema vrijednosti onda ne moramo nista ni bajndat
+                return Task.CompletedTask;   
             }
             else
             {

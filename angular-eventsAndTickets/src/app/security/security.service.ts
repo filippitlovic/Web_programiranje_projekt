@@ -1,54 +1,64 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { authenticationResponse, userCredentials } from './security.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SecurityService {
+  constructor(private http: HttpClient, private router: Router) {}
 
-  constructor(private http: HttpClient) { }
-
-  private apiURL = environment.apiURL + "/accounts";
+  private apiURL = environment.apiURL + '/accounts';
   private tokenKey: string = 'token';
 
-  isAuthenticated(): boolean{
+  isAuthenticated(): boolean {
     const token = localStorage.getItem(this.tokenKey);
 
-    if(!token){
+    if (!token) {
       return false;
     }
-      return true;
-    
+    return true;
   }
 
-  getFieldFromJWT(field: string): string{
+  getFieldFromJWT(field: string): string {
     const token = localStorage.getItem(this.tokenKey);
-    if(!token){return '';}
-      const dataToken = JSON.parse(atob(token.split('.')[1]));
-      return dataToken[field];
-
+    if (!token) {
+      return '';
+    }
+    const dataToken = JSON.parse(atob(token.split('.')[1]));
+    return dataToken[field];
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem(this.tokenKey);
+
+    this.router.navigate(['/']);
   }
 
-  getRole(): string{
+  getRole(): string {
     return '';
   }
 
-  register(userCredentials: userCredentials): Observable<authenticationResponse>{
-    return this.http.post<authenticationResponse>(this.apiURL+"/create", userCredentials)
+  register(
+    userCredentials: userCredentials
+  ): Observable<authenticationResponse> {
+    return this.http.post<authenticationResponse>(
+      this.apiURL + '/create',
+      userCredentials
+    );
   }
 
-  login(userCredentials: userCredentials): Observable<authenticationResponse>{
-    return this.http.post<authenticationResponse>(this.apiURL+"/login", userCredentials)
+  login(userCredentials: userCredentials): Observable<authenticationResponse> {
+    return this.http.post<authenticationResponse>(
+      this.apiURL + '/login',
+      userCredentials
+    );
   }
 
-  saveToken(authenticationResponse: authenticationResponse){
-    localStorage.setItem(this.tokenKey, authenticationResponse.token);
+  saveToken(authenticationResponse: authenticationResponse) {
+    localStorage.setItem(this.tokenKey, authenticationResponse.Token);
   }
 }

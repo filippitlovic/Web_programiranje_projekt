@@ -10,6 +10,5 @@ namespace EventsAndTicketsAPI.DTOs
         public string Title { get; set; }
         public int EventType { get; set; } 
         public int City { get; set; }
-        //public DateTime DateOfEvent { get; set; }
     }
 }

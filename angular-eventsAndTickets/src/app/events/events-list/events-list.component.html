@@ -20,7 +20,11 @@
         <button mat-flat-button color="primary" (click)="openDialog(event.Id)">
           detalji
         </button>
-        <button mat-stroked-button (click)="buyTicket(event.Id)">
+        <button
+          mat-stroked-button
+          routerLink="/ticket"
+          (click)="buyTicket(event.Id)"
+        >
           kupi ulaznicu
         </button>
       </a>

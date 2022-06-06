@@ -21,6 +21,9 @@ import { TheaterComponent } from './events/theater/theater.component';
 import { MusicComponent } from './events/music/music.component';
 import { EntertainmentComponent } from './events/entertainment/entertainment.component';
 import { TicketComponent } from './ticketShop/ticket/ticket.component';
+import { TicketdialogComponent } from './assets/ticketdialog/ticketdialog.component';
+import { ConfirmationdialogComponent } from './assets/confirmationdialog/confirmationdialog.component';
+import { ProfileComponent } from './user-profile/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { TicketComponent } from './ticketShop/ticket/ticket.component';
     MusicComponent,
     EntertainmentComponent,
     TicketComponent,
+    TicketdialogComponent,
+    ConfirmationdialogComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

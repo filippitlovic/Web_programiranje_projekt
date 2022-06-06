@@ -18,7 +18,6 @@ namespace EventsAndTicketsAPI.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<EventAndEventType>().HasKey(x => new { x.EventId, x.EventTypeId }); //postavljam da ce EventAndCity tablica imat 2 primary keya
-
             modelBuilder.Entity<EventAndCity>().HasKey(x => new { x.EventId, x.CityId });
             base.OnModelCreating(modelBuilder);
 
@@ -30,5 +29,6 @@ namespace EventsAndTicketsAPI.Services
         public DbSet<CityEvent> CityEvent { get; set; }
         public DbSet<EventAndCity> EventAndCity { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<UserAndEvent> UserAndEvent { get; set; } 
     }
 }

@@ -14,9 +14,6 @@ namespace EventsAndTicketsAPI.Helpers
         {
             CreateMap<EventTypeDTO, EventType>().ReverseMap();
             CreateMap<EventDTO, Event>().ReverseMap();
-            //CreateMap<Event, EventDTO>().ForMember(x => x.EventTypeDto, options => options.MapFrom(MapEventTypes));
-            //CreateMap<CityEventDTO, CityEvent>().ReverseMap();
-            //CreateMap<EventCreationDTO, Event>().ForMember(x => x.Poster, options => options.Ignore()).ForMember(x => x.EventAndEventTypes, options => options.MapFrom(MapEventsAndTypes));
            
 
         }

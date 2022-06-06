@@ -99,22 +99,10 @@ namespace EventsAndTicketsAPI.Controllers
                 Console.WriteLine("DOGADAJjao:" + JsonConvert.SerializeObject(eventsQueryable, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
             }
 
-
             var events = await eventsQueryable.OrderBy(x => x.Name).ToListAsync();
             Console.WriteLine("DOGADAJ:" + JsonConvert.SerializeObject(events, (Newtonsoft.Json.Formatting)System.Xml.Formatting.Indented));
             return mapper.Map<List<EventDTO>>(events);
         }
-        [HttpPost]
-        public async Task<ActionResult> Post([FromForm] EventCreationDTO eventCreationDTO)
-        {
-            var events = mapper.Map<Event>(eventCreationDTO);
-            /*if (eventCreationDTO.Poster != null)  //// za sliku uploadanu
-            {
-                eventCreationDTO.Poster = await fileStorageService.SaveFile(container, eventCreationDTO.Poster)
-            }*/
-            context.Add(events);
-            await context.SaveChangesAsync();
-            return NoContent();
-        }
+        
     }
 }

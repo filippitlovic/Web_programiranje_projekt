@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { eventDTO } from 'src/app/DTOs/eventDTO';
+import { DataserviceService } from 'src/app/services/dataservice.service';
 import { EventsService } from 'src/app/services/events.service';
 
 @Component({

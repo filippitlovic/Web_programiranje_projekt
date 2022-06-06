@@ -17,6 +17,6 @@ namespace EventsAndTicketsAPI.DTOs
         public DateTime Date { get; set; }
         public IFormFile Poster { get; set; }
         [ModelBinder(BinderType=typeof(TypeBinder<List<int>>))]
-        public List<int> TypeIds { get; set; }  /// ako posaljemo polje neceg sto ije tipa intova javljat ce gresku
+        public List<int> TypeIds { get; set; }  
     }
 }

@@ -69,7 +69,6 @@ namespace EventsAndTicketsAPI.Controllers
             }
         }
 
-
         private AuthenticationResponse BuildToken(UserCredentials userCredentials)
 
         {

@@ -8,6 +8,8 @@
     border:1px solid black;
     border-end-end-radius: 20px;
     border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 
 }
 
@@ -29,8 +31,11 @@ p{
 }
 
 img{
-width: 340px;
-height: 300px;
+width: 300px;
+height: 290px;
+
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
 }
 
 button{

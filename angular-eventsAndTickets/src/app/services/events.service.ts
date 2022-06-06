@@ -28,7 +28,9 @@ export class EventsService {
   public GetTheaterEvents(): Observable<eventDTO[]> {
     return this.http.get<eventDTO[]>(`${this.apiURL}/theater`);
   }
-
+  public GetEventsByUser(): Observable<eventDTO[]> {
+    return this.http.get<eventDTO[]>(`${this.apiURL}/UserEvents`);
+  }
   public filter(values: any): Observable<any> {
     const params = new HttpParams({ fromObject: values });
     console.log('vrijednosti:');

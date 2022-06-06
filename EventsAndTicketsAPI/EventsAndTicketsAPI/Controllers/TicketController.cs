@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using EventsAndTicketsAPI.BindingModels;
 using EventsAndTicketsAPI.DTOs;
 using EventsAndTicketsAPI.Entities;
 using EventsAndTicketsAPI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,13 +25,24 @@ namespace EventsAndTicketsAPI.Controllers
             this.mapper = mapper;
         }
         [HttpPost]
-        public async Task<ActionResult> Post([FromForm] TicketCreationDTO ticketCreationDTO)
+        public async Task<ActionResult> Post([FromBody] TicketBM ticket)
         {
-            var ticket = mapper.Map<Ticket>(ticketCreationDTO);
-
-            context.Add(ticket);
+            var userAndEvent = new UserAndEvent
+            {
+                UserEmail = ticket.UserMail,
+                EventId = ticket.EventId
+            };
+            context.Add(userAndEvent);
             await context.SaveChangesAsync();
             return NoContent();
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<EventDTO>>> GetUserEvents([FromQuery] string email)
+        {
+
+            var eventIds = context.UserAndEvent.Where(x => x.UserEmail == email).Select(x => x.EventId).ToList();
+            var events = context.Event.Where(x => eventIds.Contains(x.Id));
+            return mapper.Map<List<EventDTO>>(events);
         }
     }
 }
