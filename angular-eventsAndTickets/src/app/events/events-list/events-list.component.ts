@@ -24,8 +24,12 @@ export class EventsListComponent implements OnInit {
     private router: Router
   ) {}
   @Input()
+  link: String;
   role: string;
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.link = this.router.url;
+    console.log(this.link);
+  }
 
   openDialog(id: number) {
     const dialogRef = this.dialog.open(DetailsDialogComponent, {

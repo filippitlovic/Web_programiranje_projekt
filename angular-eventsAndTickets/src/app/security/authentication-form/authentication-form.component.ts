@@ -5,40 +5,33 @@ import { userCredentials } from '../security.models';
 @Component({
   selector: 'app-authentication-form',
   templateUrl: './authentication-form.component.html',
-  styleUrls: ['./authentication-form.component.css']
+  styleUrls: ['./authentication-form.component.css'],
 })
 export class AuthenticationFormComponent implements OnInit {
-
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder) {}
 
   form: FormGroup;
 
   @Input()
-  action : string = 'Register';
+  action: string = 'Registriraj se';
 
   @Output()
-  onSubmit = new EventEmitter<userCredentials>()
+  onSubmit = new EventEmitter<userCredentials>();
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      email: ['', {
-        validators: [Validators.required, Validators.email]
-      }],
-      password: ['', {
-        validators: [Validators.required]
-      }]
-    })
+      email: [
+        '',
+        {
+          validators: [Validators.required, Validators.email],
+        },
+      ],
+      password: [
+        '',
+        {
+          validators: [Validators.required],
+        },
+      ],
+    });
   }
-
-  getEmailErrorMessage(){
-    var field=this.form.get('email');
-    if(field.hasError('required')){
-      return "The email field is required"
-    }
-    if(field.hasError('email')){
-      return "The email is invalid"
-    }
-    return '';
-  }
-
 }

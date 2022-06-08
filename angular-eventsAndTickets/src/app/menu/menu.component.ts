@@ -15,14 +15,7 @@ import { DataserviceService } from '../services/dataservice.service';
   styleUrls: ['./menu.component.css'],
 })
 export class MenuComponent implements OnInit {
-  constructor(
-    public securityService: SecurityService,
-    private dataService: DataserviceService
-  ) {}
+  constructor(public securityService: SecurityService) {}
 
-  ema: string;
-  email = 'sad';
-  ngOnInit(): void {
-    this.ema = this.dataService.sharedData;
-  }
+  ngOnInit(): void {}
 }

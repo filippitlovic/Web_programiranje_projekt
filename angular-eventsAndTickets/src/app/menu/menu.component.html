@@ -20,12 +20,12 @@
         >Profil <mat-icon>person_pin</mat-icon></a
       >
       <a mat-button color="warn" (click)="securityService.logout()"
-        >Logout<mat-icon>exit_to_app</mat-icon></a
+        >Odjavi se<mat-icon>exit_to_app</mat-icon></a
       >
     </ng-container>
     <ng-container notAuthorized>
-      <a mat-button routerLink="login">Login</a>
-      <a mat-button routerLink="register">Register</a>
+      <a mat-button routerLink="login">Prijavi se</a>
+      <a mat-button routerLink="register">Registriraj se</a>
     </ng-container>
   </app-authorize-view>
 </mat-toolbar>

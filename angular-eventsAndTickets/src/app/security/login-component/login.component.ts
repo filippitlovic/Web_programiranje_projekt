@@ -1,4 +1,5 @@
 import { Component, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DataserviceService } from 'src/app/services/dataservice.service';
 import { userCredentials } from '../security.models';
@@ -13,7 +14,8 @@ export class LoginComponentComponent implements OnInit {
   constructor(
     private securityService: SecurityService,
     private router: Router,
-    private dataService: DataserviceService
+    private dataService: DataserviceService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {}

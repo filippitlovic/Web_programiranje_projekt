@@ -21,6 +21,7 @@
           detalji
         </button>
         <button
+          *ngIf="link != '/profile'"
           mat-stroked-button
           routerLink="/ticket"
           (click)="buyTicket(event.Id)"

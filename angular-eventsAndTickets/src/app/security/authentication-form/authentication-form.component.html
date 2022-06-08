@@ -1,22 +1,20 @@
-<h3>{{action}}</h3>
+<h3>{{ action }}</h3>
 
 <form (submit)="onSubmit.emit(form.value)" [formGroup]="form">
-    <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput/>
-        <mat-error>{{getEmailErrorMessage()}}</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input type="password" formControlName="password" matInput/>
-        <mat-error>The field password is required</mat-error>
-    </mat-form-field>
-    <div>
-        <button mat-flat-button color="primary" [disabled]="form.invalid">
-            {{action}}
-        </button>
-        <a mat-stroked-button routerLink="/">
-            Cancel
-        </a>
-    </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput />
+    <mat-error>Email je obavezan</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Lozinka</mat-label>
+    <input type="password" formControlName="password" matInput />
+    <mat-error>Lozinka je obavezna</mat-error>
+  </mat-form-field>
+  <div>
+    <button mat-flat-button color="primary" [disabled]="form.invalid">
+      {{ action }}
+    </button>
+    <a mat-stroked-button routerLink="/"> Odustani </a>
+  </div>
 </form>

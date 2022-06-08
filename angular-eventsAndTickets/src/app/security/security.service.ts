@@ -34,7 +34,7 @@ export class SecurityService {
 
   logout() {
     localStorage.removeItem(this.tokenKey);
-
+    localStorage.clear();
     this.router.navigate(['/']);
   }
 
